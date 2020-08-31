@@ -38,17 +38,11 @@ df4 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
 					   r'\Personal Projects\excel data'\
 					   r'\Parent Email IGCSE 1C.xlsx')
 
-#imports the date, defines the variable and formats it
-from datetime import date 
-today = date.today()      
-date = today.strftime("%B %d, %Y") 
-
 choose_again = 'yes'
 while choose_again == 'yes' or choose_again == 'y':
 	class_name = input('Press 1 for 7LB\nPress 2 for 2C\n'\
-	               'Press 3 for 2B\nPress 4 for 1C\n')
-	# print (f'You have chosen {class_name}!')
-
+				   'Press 3 for 2B\nPress 4 for 1C\n')
+	
 	if class_name == '1':
 		#set student number as the index
 		df1 = df1.set_index('Student Number') 
@@ -77,10 +71,24 @@ while choose_again == 'yes' or choose_again == 'y':
 		elif pa_or_ma == '2':
 			to_address = mother_email
 
-		#The email message is contained in a plain text file.
-		text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
-	     "Personal Projects\\Email Txt Files\\"
-	     "Missing Homework Email.txt", "r")
+		#There are three different choices for messages held in text files.
+		email_choice = input('Press 1 for Missing HW\n'
+							'Press 2 for Phone in Class\n'
+							'Press 3 for Tardy\n')
+		if email_choice == '1':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Missing Homework Email.txt", "r")
+		elif email_choice == '2':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Using Phone.txt", "r")
+		elif email_choice == '3':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Tardy.txt", "r")
+		
+		#call EmailMessage function and set the chosen message
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
@@ -123,9 +131,22 @@ while choose_again == 'yes' or choose_again == 'y':
 		elif pa_or_ma == '2':
 			to_address = mother_email
 
-		text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
-	     "Personal Projects\\Email Txt Files\\"
-	     "Missing Homework Email.txt", "r")
+		email_choice = input('Press 1 for Missing HW\n'
+							'Press 2 for Phone in Class\n'
+							'Press 3 for Tardy\n')
+		if email_choice == '1':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Missing Homework Email.txt", "r")
+		elif email_choice == '2':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Using Phone.txt", "r")
+		elif email_choice == '3':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Tardy.txt", "r")
+
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
@@ -164,9 +185,22 @@ while choose_again == 'yes' or choose_again == 'y':
 		elif pa_or_ma == '2':
 			to_address = mother_email
 
-		text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
-	     "Personal Projects\\Email Txt Files\\"
-	     "Missing Homework Email.txt", "r")
+		email_choice = input('Press 1 for Missing HW\n'
+							'Press 2 for Phone in Class\n'
+							'Press 3 for Tardy\n')
+		if email_choice == '1':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Missing Homework Email.txt", "r")
+		elif email_choice == '2':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Using Phone.txt", "r")
+		elif email_choice == '3':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Tardy.txt", "r")
+		
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
@@ -205,9 +239,22 @@ while choose_again == 'yes' or choose_again == 'y':
 		elif pa_or_ma == '2':
 			to_address = mother_email
 
-		text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
-	     "Personal Projects\\Email Txt Files\\"
-	     "Missing Homework Email.txt", "r")
+		email_choice = input('Press 1 for Missing HW\n'
+							'Press 2 for Phone in Class\n'
+							'Press 3 for Tardy\n')
+		if email_choice == '1':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Missing Homework Email.txt", "r")
+		elif email_choice == '2':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Using Phone.txt", "r")
+		elif email_choice == '3':
+			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
+			"Personal Projects\\Email Txt Files\\"
+			"Tardy.txt", "r")
+		
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
