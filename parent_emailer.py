@@ -38,6 +38,20 @@ df4 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
 					   r'\Personal Projects\excel data'\
 					   r'\Parent Email IGCSE 1C.xlsx')
 
+father_email, mother_email = '',''
+def father_mother_email(father_email, mother_email):
+	"""displays parent's emails"""
+	print(f'Father Email: {father_email}\n')
+	print(f'Mother Email: {mother_email}\n')
+
+def assign_pa_or_ma(father_email, mother_email):
+	"""chosen parent assigned to_address"""
+	if pa_or_ma == '1':
+		to_address = father_email
+	elif pa_or_ma == '2':
+		to_address = mother_email
+	return to_address
+
 choose_again = 'yes'
 while choose_again == 'yes' or choose_again == 'y':
 	class_name = input('Press 1 for 7LB\nPress 2 for 2C\n'\
@@ -50,8 +64,8 @@ while choose_again == 'yes' or choose_again == 'y':
 		print ()  
 
 		#user inputs student number and change to integer value
-		s_num = input('Enter student number: ') 
-		s_num = int(s_num)						
+		s_num = int(input('Enter student number: ')) 
+								
 		
 		#filter by user entered student number and 3 column string tags
 		print(df1.loc[df1.index[s_num - 1:s_num],["Student Name",
@@ -61,15 +75,15 @@ while choose_again == 'yes' or choose_again == 'y':
 		#filter by student number and column string
 		father_email = df1.loc[s_num, "Father Email"]
 		mother_email = df1.loc[s_num, "Mother Email"]
-		print(f'Father Email: {father_email}\n')
-		print(f'Mother Email: {mother_email}\n')
+		
+		father_mother_email(father_email, mother_email)
+			
 
 		pa_or_ma = input('Press 1 to email the father.\n'
 						 'Press 2 to email the mother.\n')
-		if pa_or_ma == '1':
-			to_address = father_email
-		elif pa_or_ma == '2':
-			to_address = mother_email
+
+		to_address = assign_pa_or_ma(father_email, mother_email)
+		
 
 		#There are three different choices for messages held in text files.
 		email_choice = input('Press 1 for Missing HW\n'
@@ -79,20 +93,23 @@ while choose_again == 'yes' or choose_again == 'y':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Missing Homework Email.txt", "r")
+			subject = "Missing Homework"
 		elif email_choice == '2':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Using Phone.txt", "r")
+			subject = "Phone in Class"
 		elif email_choice == '3':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Tardy.txt", "r")
+			subject = "Late to Class"
 		
 		#call EmailMessage function and set the chosen message
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
-		msg['Subject']='Email Testing with Python'
+		msg['Subject']= subject
 		msg['From'] = office_user
 		msg['To'] = to_address
 
@@ -114,22 +131,19 @@ while choose_again == 'yes' or choose_again == 'y':
 		df2 = df2.set_index('Student Number')
 		print(df2)
 		print()
-		s_num = input('Enter student number: ')
-		s_num = int(s_num)
+		s_num = int(input('Enter student number: '))
+		
 		print(df2.loc[df2.index[s_num - 1:s_num],["Student Name",
 											"Father Email","Mother Email"]])
 		print()
 		father_email = df2.loc[s_num, "Father Email"]
 		mother_email = df2.loc[s_num, "Mother Email"]
-		print(f'Father Email: {father_email}\n')
-		print(f'Mother Email: {mother_email}\n')
+		father_mother_email(father_email, mother_email)
 
 		pa_or_ma = input('Press 1 to email the father.\n'
 						 'Press 2 to email the mother.\n')
-		if pa_or_ma == '1':
-			to_address = father_email
-		elif pa_or_ma == '2':
-			to_address = mother_email
+
+		to_address = assign_pa_or_ma(father_email, mother_email)
 
 		email_choice = input('Press 1 for Missing HW\n'
 							'Press 2 for Phone in Class\n'
@@ -138,19 +152,22 @@ while choose_again == 'yes' or choose_again == 'y':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Missing Homework Email.txt", "r")
+			subject = "Missing Homework"
 		elif email_choice == '2':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Using Phone.txt", "r")
+			subject = "Phone in Class"
 		elif email_choice == '3':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Tardy.txt", "r")
+			subject = "Late to Class"
 
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
-		msg['Subject']='Email Testing with Python'
+		msg['Subject']= subject
 		msg['From'] = office_user
 		msg['To'] = to_address
 
@@ -168,22 +185,19 @@ while choose_again == 'yes' or choose_again == 'y':
 		df3 = df3.set_index('Student Number')
 		print(df3)
 		print()
-		s_num = input('Enter student number: ')
-		s_num = int(s_num)
+		s_num = int(input('Enter student number: '))
+		
 		print(df3.loc[df3.index[s_num - 1:s_num],["Student Name",
 										"Father Email","Mother Email"]])
 		print()
 		father_email = df3.loc[s_num, "Father Email"]
 		mother_email = df3.loc[s_num, "Mother Email"]
-		print(f'Father Email: {father_email}\n')
-		print(f'Mother Email: {mother_email}\n')
+		father_mother_email(father_email, mother_email)
 
 		pa_or_ma = input('Press 1 to email the father.\n'
 						 'Press 2 to email the mother.\n')
-		if pa_or_ma == '1':
-			to_address = father_email
-		elif pa_or_ma == '2':
-			to_address = mother_email
+
+		to_address = assign_pa_or_ma(father_email, mother_email)
 
 		email_choice = input('Press 1 for Missing HW\n'
 							'Press 2 for Phone in Class\n'
@@ -192,19 +206,22 @@ while choose_again == 'yes' or choose_again == 'y':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Missing Homework Email.txt", "r")
+			subject = "Missing Homework"
 		elif email_choice == '2':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Using Phone.txt", "r")
+			subject = "Phone in Class"
 		elif email_choice == '3':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Tardy.txt", "r")
+			subject = "Late to Class"
 		
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
-		msg['Subject']='Email Testing with Python'
+		msg['Subject']= subject
 		msg['From'] = office_user
 		msg['To'] = to_address
 
@@ -222,22 +239,19 @@ while choose_again == 'yes' or choose_again == 'y':
 		df4 = df4.set_index('Student Number') 
 		print(df4)
 		print ()
-		s_num = input('Enter student number: ')
-		s_num = int(s_num)
+		s_num = int(input('Enter student number: '))
+		
 		print(df4.loc[df4.index[s_num - 1:s_num],["Student Name",
 											"Father Email","Mother Email"]])
 		print()
 		father_email = df4.loc[s_num, "Father Email"]
 		mother_email = df4.loc[s_num, "Mother Email"]
-		print(f'Father Email: {father_email}\n')
-		print(f'Mother Email: {mother_email}\n')
+		father_mother_email(father_email, mother_email)
 
 		pa_or_ma = input('Press 1 to email the father.\n'
 						 'Press 2 to email the mother.\n')
-		if pa_or_ma == '1':
-			to_address = father_email
-		elif pa_or_ma == '2':
-			to_address = mother_email
+		
+		to_address = assign_pa_or_ma(father_email, mother_email)
 
 		email_choice = input('Press 1 for Missing HW\n'
 							'Press 2 for Phone in Class\n'
@@ -246,19 +260,22 @@ while choose_again == 'yes' or choose_again == 'y':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Missing Homework Email.txt", "r")
+			subject = "Missing Homework"
 		elif email_choice == '2':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Using Phone.txt", "r")
+			subject = "Phone in Class"
 		elif email_choice == '3':
 			text_file = open("C:\\Users\\Anthony\\Documents\\python_work\\"
 			"Personal Projects\\Email Txt Files\\"
 			"Tardy.txt", "r")
+			subject = "Late to Class"
 		
 		msg = EmailMessage()
 		msg.set_content(text_file.read())
 
-		msg['Subject']='Email Testing with Python'
+		msg['Subject']= subject
 		msg['From'] = office_user
 		msg['To'] = to_address
 
