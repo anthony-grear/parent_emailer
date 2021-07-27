@@ -8,7 +8,7 @@ import sqlite3
 office_user = os.environ.get('OFFICE_USER')
 office_pass = os.environ.get('OFFICE_PASS')
 old_value_path = 'C:\\Python\\python_work\\Personal Projects\\parent_emailer\\parent_emailer_V2\\old_value'
-
+db_path = 'C:\\Python\\python_work\\Personal Projects\\parent_emailer\\parent_emailer_V2\\parent_email_log.db'
    
 def send_email():
     wb = xw.Book.caller()
@@ -42,7 +42,7 @@ def send_email():
     content_no_footer = the_content.replace(old_content, "")
     
     
-    conn = sqlite3.connect('C:\\Python\\python_work\\Personal Projects\\parent_emailer\\parent_emailer_V2\\parent_email_log.db')
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
     c.execute("INSERT INTO 'messages' VALUES (?, ?, ?, ?, ?, ?, ?)", (s_number, s_name, parent_email, the_subject, content_no_footer, the_cc, date_now))
     conn.commit()
@@ -118,3 +118,13 @@ def clear_form():
     wb = xw.Book.caller()
     sheet = wb.sheets[2]
     sheet.range("B1:B8").options(transpose = True).clear()
+    
+def get_db_list():
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    c.execute("SELECT * FROM 'messages' WHERE student_number = 7")
+    
+    db_list = c.fetchall()
+    wb = xw.Book.caller()
+    sheet = wb.sheets[4]
+    sheet.range("A1").value = db_list
