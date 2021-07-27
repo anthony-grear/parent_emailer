@@ -30,17 +30,22 @@ def get_parent_email():
     wb = xw.Book.caller()
     sheet = wb.sheets[1]
     active_cell = wb.app.selection
-    active_cell_row = active_cell.row
+    active_cell_row = active_cell.row    
     sheet = wb.sheets[2]
     sheet.range("B3").value = active_cell.value
+    
 
 def get_student_name():   
     wb = xw.Book.caller()
     sheet = wb.sheets[1]
     active_cell = wb.app.selection
     active_cell_row = active_cell.row
+    active_cell_column = active_cell.column
+    active_cell_column -= 1
+    student_number_value = sheet.range((active_cell_row, active_cell_column)).value
     sheet = wb.sheets[2]
     sheet.range("B2").value = active_cell.value
+    sheet.range("B1").value = student_number_value
     
 def get_absent_message():
     today = date.today()
