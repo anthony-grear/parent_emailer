@@ -22,21 +22,13 @@ office_user = os.environ.get('OFFICE_USER')
 office_pass = os.environ.get('OFFICE_PASS')
 
 # import each email excel file into 4 different dataframes
-df1 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
-					   r'\Personal Projects\excel data'\
-					   r'\7LB Parent Email List.xlsx')
+df1 = pd.read_excel(r'7LB Parent Email List.xlsx')
 
-df2 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
-					   r'\Personal Projects\excel data'\
-					   r'\IGCSE 2C Parent Email.xlsx')
+df2 = pd.read_excel(r'IGCSE 2C Parent Email.xlsx')
 
-df3 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
-					   r'\Personal Projects\excel data'\
-					   r'\IGCSE 2B Parent Email.xlsx')
+df3 = pd.read_excel(r'IGCSE 2B Parent Email.xlsx')
 
-df4 = pd.read_excel(r'C:\Users\Anthony\Documents\python_work'\
-					   r'\Personal Projects\excel data'\
-					   r'\Parent Email IGCSE 1C.xlsx')
+df4 = pd.read_excel(r'Parent Email IGCSE 1C.xlsx')
 
 father_email, mother_email = '',''
 def father_mother_email(father_email, mother_email):
