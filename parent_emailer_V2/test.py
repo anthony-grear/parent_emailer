@@ -120,16 +120,19 @@ def clear_form():
     sheet.range("B1:B8").options(transpose = True).clear()
     
 def get_db_list():
+    wb = xw.Book.caller()
+    sheet = wb.sheets[3]
+    active_cell = wb.app.selection
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
-    c.execute("SELECT * FROM 'messages' WHERE student_number = 7")
+    c.execute("SELECT * FROM 'messages' WHERE (student_number = ?)", (active_cell.value,))
     
     db_list = c.fetchall()
     wb = xw.Book.caller()
     sheet = wb.sheets[4]
-    sheet.range("A1").value = db_list
+    sheet.range("A2").value = db_list
 
-def clear_report_sheet():
+
     wb = xw.Book.caller()
     sheet = wb.sheets[4]
-    sheet.clear()
+    sheet.to_pdf()
