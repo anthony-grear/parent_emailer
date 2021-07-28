@@ -128,3 +128,8 @@ def get_db_list():
     wb = xw.Book.caller()
     sheet = wb.sheets[4]
     sheet.range("A1").value = db_list
+
+def clear_report_sheet():
+    wb = xw.Book.caller()
+    sheet = wb.sheets[4]
+    sheet.clear()
